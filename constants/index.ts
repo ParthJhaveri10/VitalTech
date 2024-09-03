@@ -8,7 +8,7 @@ export const PatientFormDefaultValues = {
   birthDate: new Date(Date.now()),
   gender: "Male" as Gender,
   address: "",
-  occupation: "",
+  bloodgrp: "",
   emergencyContactName: "",
   emergencyContactNumber: "",
   primaryPhysician: "",
@@ -84,3 +84,30 @@ export const StatusIcon = {
   pending: "/assets/icons/pending.svg",
   cancelled: "/assets/icons/cancelled.svg",
 };
+
+export const Bloodgrp = [
+  {
+    name: "A+",
+  },
+  {
+    name: "A-",
+  },
+  {
+    name: "B+",
+  },
+  {
+    name: "B-",
+  },
+  {
+    name: "O+",
+  },
+  {
+    name: "O-",
+  },
+  {
+    name: "AB+",
+  },
+  {
+    name: "AB-",
+  },
+];

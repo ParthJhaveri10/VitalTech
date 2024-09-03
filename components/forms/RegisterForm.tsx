@@ -12,6 +12,7 @@ import { Label } from "@/components/ui/label";
 import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group";
 import { SelectItem } from "@/components/ui/select";
 import {
+  Bloodgrp,
   Doctors,
   GenderOptions,
   IdentificationTypes,
@@ -67,7 +68,7 @@ const RegisterForm = ({ user }: { user: User }) => {
         birthDate: new Date(values.birthDate),
         gender: values.gender,
         address: values.address,
-        occupation: values.occupation,
+        bloodgrp: values.bloodgrp,
         emergencyContactName: values.emergencyContactName,
         emergencyContactNumber: values.emergencyContactNumber,
         primaryPhysician: values.primaryPhysician,
@@ -83,6 +84,8 @@ const RegisterForm = ({ user }: { user: User }) => {
           ? formData
           : undefined,
         privacyConsent: values.privacyConsent,
+        disclosureConsent: values.disclosureConsent,
+        treatmentConsent: values.treatmentConsent,
       };
 
       const newPatient = await registerPatient(patient);
@@ -190,13 +193,22 @@ const RegisterForm = ({ user }: { user: User }) => {
               placeholder="14 street, New york, NY - 5101"
             />
 
-            <CustomFormField
-              fieldType={FormFieldType.INPUT}
-              control={form.control}
-              name="occupation"
-              label="Occupation"
-              placeholder=" Software Engineer"
-            />
+<CustomFormField
+            fieldType={FormFieldType.SELECT}
+            control={form.control}
+            name="bloodgrp"
+            label="blood grp"
+            placeholder="Select a blood group"
+          >
+            {Bloodgrp.map((bloodgrp, i) => (
+              <SelectItem key={bloodgrp.name + i} value={bloodgrp.name}>
+                <div className="flex cursor-pointer items-center gap-2">
+                  
+                  <p>{bloodgrp.name}</p>
+                </div>
+              </SelectItem>
+            ))}
+          </CustomFormField>
           </div>
 
           {/* Emergency Contact Name & Emergency Contact Number */}
